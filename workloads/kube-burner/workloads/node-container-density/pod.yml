@@ -1,0 +1,24 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: {{.JobName}}-{{.Iteration}}
+  labels:
+    name: {{.JobName}}
+spec:
+  nodeSelector: {{.nodeSelector}}
+  tolerations:
+  - key: os
+    value: Windows
+    effect: NoSchedule
+  containers:
+{{ range $pos, $val := sequence 1 .containerCount }}
+  - name: node-density-{{ $val }}
+    image: gcr.io/google_containers/pause:3.1
+    resources:
+      requests:
+        memory: "1Mi"
+        cpu: "1m"
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: false
+{{end}}

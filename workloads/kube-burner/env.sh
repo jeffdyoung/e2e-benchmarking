@@ -35,6 +35,7 @@ export JOB_PAUSE=${JOB_PAUSE:-1m}
 
 # kube-burner workload defaults
 export NODE_POD_DENSITY_IMAGE=${NODE_POD_DENSITY_IMAGE:-gcr.io/google_containers/pause:3.1}
+export NODE_CONTAINER_DENSITY_IMAGE=${NODE_CONTAINER_DENSITY_IMAGE:-gcr.io/google_containers/pause:3.1}
 
 # kube-burner churn enablement
 export CHURN=${CHURN:-false}
